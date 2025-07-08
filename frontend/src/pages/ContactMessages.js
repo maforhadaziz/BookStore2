@@ -16,10 +16,12 @@ const ContactMessages = () => {
     fetchUnreadCount();
   }, []);
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
   const fetchMessages = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/contact/messages', {
+      const response = await axios.get(`${API_BASE_URL}/contact/messages`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMessages(response.data);
@@ -34,7 +36,7 @@ const ContactMessages = () => {
   const fetchUnreadCount = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/contact/unread-count', {
+      const response = await axios.get(`${API_BASE_URL}/contact/unread-count`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUnreadCount(response.data.unreadCount);
@@ -46,7 +48,7 @@ const ContactMessages = () => {
   const markAsRead = async (messageId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/contact/messages/${messageId}/read`, {}, {
+      await axios.put(`${API_BASE_URL}/contact/messages/${messageId}/read`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -66,7 +68,7 @@ const ContactMessages = () => {
   const markAsReplied = async (messageId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/contact/messages/${messageId}/replied`, {}, {
+      await axios.put(`${API_BASE_URL}/contact/messages/${messageId}/replied`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -87,7 +89,7 @@ const ContactMessages = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/contact/messages/${messageId}`, {
+      await axios.delete(`${API_BASE_URL}/contact/messages/${messageId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -111,7 +113,7 @@ const ContactMessages = () => {
       const token = localStorage.getItem('token');
       
       // Send reply email (you'll need to implement this endpoint)
-      await axios.post(`http://localhost:5000/api/contact/messages/${messageId}/send-reply`, {
+      await axios.post(`${API_BASE_URL}/contact/messages/${messageId}/send-reply`, {
         replyText,
         userEmail,
         userName

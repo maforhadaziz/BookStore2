@@ -9,6 +9,8 @@ const History = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     
@@ -19,7 +21,7 @@ const History = () => {
       return;
     }
 
-    axios.get('http://localhost:5000/api/users/history', {
+    axios.get(`${API_BASE_URL}/users/history`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(res => {

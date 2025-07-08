@@ -6,6 +6,7 @@ import './SidebarDrawer.css';
 const SidebarDrawer = ({ open, onClose, user, onLogout }) => {
   const navigate = useNavigate();
   const [unreadMessages, setUnreadMessages] = useState(0);
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
 
   // Fetch unread messages count when drawer opens
   useEffect(() => {
@@ -21,7 +22,7 @@ const SidebarDrawer = ({ open, onClose, user, onLogout }) => {
   const fetchUserUnreadMessages = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/contact/unread-replies-count', {
+      const response = await axios.get(`${API_BASE_URL}/contact/unread-replies-count`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -34,7 +35,7 @@ const SidebarDrawer = ({ open, onClose, user, onLogout }) => {
   const fetchAdminUnreadMessages = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/contact/messages', {
+      const response = await axios.get(`${API_BASE_URL}/contact/messages`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       

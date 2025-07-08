@@ -10,6 +10,8 @@ const ActiveUsers = () => {
   const [loading, setLoading] = useState(true);
   const [autoRefresh, setAutoRefresh] = useState(true);
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     fetchActiveUsers();
     
@@ -27,7 +29,7 @@ const ActiveUsers = () => {
   const fetchActiveUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/users/active', {
+      const response = await axios.get(`${API_BASE_URL}/users/active`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       

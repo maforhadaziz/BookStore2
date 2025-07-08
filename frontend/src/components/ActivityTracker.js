@@ -31,7 +31,8 @@ const ActivityTracker = () => {
       const token = localStorage.getItem('token');
       if (!token) return;
 
-      await axios.post('http://localhost:5000/api/users/activity', {
+      const API_BASE_URL = process.env.REACT_APP_API_URL;
+      await axios.post(`${API_BASE_URL}/users/activity`, {
         currentPage: location.pathname,
         userAgent: navigator.userAgent
       }, {
@@ -47,7 +48,8 @@ const ActivityTracker = () => {
       const token = localStorage.getItem('token');
       if (!token) return;
 
-      await axios.post('http://localhost:5000/api/users/offline', {}, {
+      const API_BASE_URL = process.env.REACT_APP_API_URL;
+      await axios.post(`${API_BASE_URL}/users/offline`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
     } catch (error) {

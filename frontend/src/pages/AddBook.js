@@ -26,6 +26,8 @@ const AddBook = () => {
     'Romance', 'Mystery', 'Fantasy', 'Self-Help'
   ];
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -90,7 +92,7 @@ const AddBook = () => {
         data.append('coverImage', files.coverImage);
       }
 
-      await axios.post('http://localhost:5000/api/books', data, {
+      await axios.post(`${API_BASE_URL}/books`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${localStorage.getItem('token')}`

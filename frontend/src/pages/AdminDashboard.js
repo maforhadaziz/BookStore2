@@ -32,17 +32,20 @@ const AdminDashboard = () => {
     fetchHappyReaders();
   }, []);
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+  const UPLOADS_BASE_URL = API_BASE_URL ? API_BASE_URL.replace('/api', '') : '';
+
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
       
       // Fetch books
-      const booksResponse = await axios.get('http://localhost:5000/api/books');
+      const booksResponse = await axios.get(`${API_BASE_URL}/books`);
       const books = booksResponse.data.books || booksResponse.data;
       
       // Fetch users
-      const usersResponse = await axios.get('http://localhost:5000/api/users/all', {
+      const usersResponse = await axios.get(`${API_BASE_URL}/users/all`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const users = usersResponse.data;
@@ -72,7 +75,7 @@ const AdminDashboard = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/books/analytics/overview', {
+      const response = await axios.get(`${API_BASE_URL}/books/analytics/overview`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAnalytics(response.data);
@@ -86,7 +89,7 @@ const AdminDashboard = () => {
   const fetchHappyReaders = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/books/analytics/happy-readers', {
+      const response = await axios.get(`${API_BASE_URL}/books/analytics/happy-readers`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setHappyReaders(response.data);
@@ -98,7 +101,7 @@ const AdminDashboard = () => {
   const fetchBookAnalytics = async (bookId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:5000/api/books/${bookId}/analytics`, {
+      const response = await axios.get(`${API_BASE_URL}/books/${bookId}/analytics`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBookAnalytics(response.data);
@@ -220,7 +223,7 @@ const AdminDashboard = () => {
               <div key={book._id} className="recent-book-card">
                 <div className="book-cover">
                   {book.coverImageFileName ? (
-                    <img src={`http://localhost:5000/uploads/${book.coverImageFileName}`} alt={book.title} />
+                    <img src={`${UPLOADS_BASE_URL}/uploads/${book.coverImageFileName}`} alt={book.title} />
                   ) : (
                     <div className="placeholder-cover">📚</div>
                   )}

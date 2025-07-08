@@ -16,6 +16,7 @@ const MyMessages = () => {
 
   const navigate = useNavigate();
   const isAuthenticated = !!localStorage.getItem('token');
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -31,7 +32,7 @@ const MyMessages = () => {
       setError(null);
       
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/contact/my-messages', {
+      const response = await axios.get(`${API_BASE_URL}/contact/my-messages`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -52,7 +53,7 @@ const MyMessages = () => {
     if (message.adminReply && !message.userReadReply) {
       try {
         const token = localStorage.getItem('token');
-        await axios.put(`http://localhost:5000/api/contact/my-messages/${message._id}/mark-read`, {}, {
+        await axios.put(`${API_BASE_URL}/contact/my-messages/${message._id}/mark-read`, {}, {
           headers: { Authorization: `Bearer ${token}` }
         });
         
@@ -83,7 +84,7 @@ const MyMessages = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        `http://localhost:5000/api/contact/my-messages/${selectedMessage._id}/reply`,
+        `${API_BASE_URL}/contact/my-messages/${selectedMessage._id}/reply`,
         { message: replyText },
         { headers: { Authorization: `Bearer ${token}` } }
       );

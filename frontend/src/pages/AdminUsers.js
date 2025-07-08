@@ -19,11 +19,13 @@ const AdminUsers = () => {
     fetchUsers();
   }, []);
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
   const fetchUsers = async () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/users/all', {
+      const response = await axios.get(`${API_BASE_URL}/users/all`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(response.data);
@@ -47,7 +49,7 @@ const AdminUsers = () => {
   const handleSaveEdit = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/users/${editingUser._id}`, {
+      await axios.put(`${API_BASE_URL}/users/${editingUser._id}`, {
         name: editingUser.name,
         email: editingUser.email,
         role: editingUser.role
@@ -72,7 +74,7 @@ const AdminUsers = () => {
   const confirmDelete = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/users/${userToDelete._id}`, {
+      await axios.delete(`${API_BASE_URL}/users/${userToDelete._id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
