@@ -13,10 +13,12 @@ const SuperAdmin = () => {
     fetchUsers();
   }, []);
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
   const fetchCurrentUser = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/users/verify', {
+      const response = await axios.get(`${API_BASE_URL}/users/verify`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCurrentUser(response.data.user);
@@ -28,7 +30,7 @@ const SuperAdmin = () => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/users/all', {
+      const response = await axios.get(`${API_BASE_URL}/users/all`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(response.data);
@@ -43,7 +45,7 @@ const SuperAdmin = () => {
   const promoteUser = async (userId, userName) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:5000/api/users/promote/${userId}`, {}, {
+      await axios.post(`${API_BASE_URL}/users/promote/${userId}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -58,7 +60,7 @@ const SuperAdmin = () => {
   const demoteUser = async (userId, userName) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:5000/api/users/demote/${userId}`, {}, {
+      await axios.post(`${API_BASE_URL}/users/demote/${userId}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       

@@ -12,6 +12,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const isAuthenticated = !!localStorage.getItem('token');
   const isAdmin = localStorage.getItem('isAdmin') === 'true';
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     // Check if user is authenticated
@@ -21,7 +22,7 @@ const Profile = () => {
     }
 
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:5000/api/users/profile', {
+    axios.get(`${API_BASE_URL}/users/profile`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => {
@@ -40,7 +41,7 @@ const Profile = () => {
         }
         setLoading(false);
       });
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, API_BASE_URL]);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -49,7 +50,7 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    axios.put('http://localhost:5000/api/users/profile', user, {
+    axios.put(`${API_BASE_URL}/users/profile`, user, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setMessage('Profile updated!'))
