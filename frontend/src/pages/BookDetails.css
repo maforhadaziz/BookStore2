@@ -1,0 +1,436 @@
+.bookdetails-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.08);
+  padding: 2rem;
+}
+.bookdetails-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.bookdetails-fav {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s;
+}
+.bookdetails-fav.favorited {
+  color: #e74c3c;
+}
+.bookdetails-cover {
+  max-width: 200px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+.bookdetails-info p {
+  margin: 0.2rem 0;
+}
+.bookdetails-rating {
+  margin: 1rem 0;
+}
+.bookdetails-rate-stars {
+  margin-top: 0.5rem;
+}
+.bookdetails-star {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s;
+}
+.bookdetails-star.filled {
+  color: #ffd700;
+}
+.bookdetails-rating-msg {
+  margin-left: 10px;
+  color: #009ec3;
+}
+.bookdetails-actions {
+  margin: 1.5rem 0 1rem 0;
+  display: flex;
+  gap: 1rem;
+}
+.bookdetails-btn {
+  background: #2d3e50;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.bookdetails-btn:hover {
+  background: #00d2ff;
+}
+.bookdetails-btn-link {
+  text-decoration: none;
+}
+.bookdetails-pdfreader {
+  margin-top: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.bookdetails-reviews {
+  margin-top: 2.5rem;
+}
+.bookdetails-review {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+.bookdetails-review-date {
+  color: #888;
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+.bookdetails-review-form {
+  margin-top: 1rem;
+}
+.bookdetails-review-input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: #f9f9f9;
+}
+.bookdetails-review-msg {
+  margin-left: 10px;
+  color: #009ec3;
+}
+@media (max-width: 900px) {
+  .bookdetails-container {
+    padding: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .bookdetails-container {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+}
+
+.admin-notice {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.admin-notice p {
+  margin: 0;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.login-required-notice {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-required-notice p {
+  margin: 0 0 10px 0;
+  color: #856404;
+  font-weight: 500;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.review-user-info {
+  flex: 1;
+}
+
+.flag-review-btn {
+  background: none;
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+.flag-review-btn:hover {
+  background: #ff6b6b;
+  color: white;
+}
+
+.review-flagged-notice {
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid #ff6b6b;
+  color: #d63031;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.admin-reply {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-reply-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.admin-reply-date {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.admin-reply-content {
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.admin-reply-form {
+  margin-top: 10px;
+}
+
+.admin-reply-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-reply-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+}
+
+.admin-reply-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.bookdetails-btn.cancel {
+  background: #6c757d;
+  color: white;
+}
+
+.bookdetails-btn.cancel:hover {
+  background: #5a6268;
+}
+
+.admin-review-notice {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid #ffd700;
+  border-radius: 4px;
+  color: #ffd700;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.admin-review-notice {
+  background: #e3f2fd;
+  border: 1px solid #2196f3;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.admin-review-notice p {
+  margin: 0;
+  color: #1976d2;
+  font-weight: 500;
+}
+
+/* Dark Mode Styles for BookDetails */
+.dark-theme .bookdetails-container {
+  background: #23272b;
+  color: #f1f1f1;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .bookdetails-title {
+  color: #f1f1f1;
+}
+
+.dark-theme .bookdetails-fav {
+  color: #666;
+}
+
+.dark-theme .bookdetails-fav.favorited {
+  color: #e74c3c;
+}
+
+.dark-theme .bookdetails-cover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .bookdetails-info p {
+  color: #f1f1f1;
+}
+
+.dark-theme .bookdetails-star {
+  color: #666;
+}
+
+.dark-theme .bookdetails-star.filled {
+  color: #ffd700;
+}
+
+.dark-theme .bookdetails-rating-msg {
+  color: #00d2ff;
+}
+
+.dark-theme .bookdetails-btn {
+  background: #ffd700;
+  color: #23272b;
+}
+
+.dark-theme .bookdetails-btn:hover {
+  background: #ffed4e;
+}
+
+.dark-theme .bookdetails-pdfreader {
+  background: #4a4a4a;
+  color: #f1f1f1;
+}
+
+.dark-theme .bookdetails-review {
+  border-bottom: 1px solid #666;
+  color: #f1f1f1;
+}
+
+.dark-theme .bookdetails-review-date {
+  color: #bdc3c7;
+}
+
+.dark-theme .bookdetails-review-input {
+  background: #4a4a4a;
+  border: 1px solid #666;
+  color: #f1f1f1;
+}
+
+.dark-theme .bookdetails-review-input:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+.dark-theme .bookdetails-review-input::placeholder {
+  color: #bdc3c7;
+}
+
+.dark-theme .bookdetails-review-msg {
+  color: #00d2ff;
+}
+
+.dark-theme .admin-notice {
+  background: #4a4a4a;
+  border: 1px solid #666;
+}
+
+.dark-theme .admin-notice p {
+  color: #bdc3c7;
+}
+
+.dark-theme .login-required-notice {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid #ffd700;
+}
+
+.dark-theme .login-required-notice p {
+  color: #ffd700;
+}
+
+.dark-theme .flag-review-btn {
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+}
+
+.dark-theme .flag-review-btn:hover {
+  background: #ff6b6b;
+  color: white;
+}
+
+.dark-theme .review-flagged-notice {
+  background: rgba(255, 107, 107, 0.2);
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+}
+
+.dark-theme .admin-reply {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .admin-reply-header {
+  color: #f1f1f1;
+}
+
+.dark-theme .admin-reply-date {
+  color: #bdc3c7;
+}
+
+.dark-theme .admin-reply-content {
+  color: #f1f1f1;
+}
+
+.dark-theme .admin-reply-btn {
+  background: #ffd700;
+  color: #23272b;
+}
+
+.dark-theme .admin-reply-btn:hover {
+  background: #ffed4e;
+}
+
+.dark-theme .bookdetails-btn.cancel {
+  background: #6c757d;
+  color: white;
+}
+
+.dark-theme .bookdetails-btn.cancel:hover {
+  background: #5a6268;
+}
+
+.dark-theme .admin-review-notice {
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid #00d2ff;
+}
+
+.dark-theme .admin-review-notice p {
+  color: #00d2ff;
+} 

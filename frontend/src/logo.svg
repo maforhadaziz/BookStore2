@@ -1,0 +1,12 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="24" fill="#f5f7fa"/>
+  <g>
+    <rect x="28" y="32" width="64" height="56" rx="8" fill="#667eea"/>
+    <rect x="36" y="40" width="48" height="40" rx="4" fill="#fff"/>
+    <rect x="44" y="48" width="32" height="4" rx="2" fill="#667eea"/>
+    <rect x="44" y="56" width="32" height="4" rx="2" fill="#667eea"/>
+    <rect x="44" y="64" width="20" height="4" rx="2" fill="#667eea"/>
+    <circle cx="60" cy="90" r="6" fill="#667eea"/>
+  </g>
+  <text x="60" y="110" text-anchor="middle" font-size="18" font-family="Arial, Helvetica, sans-serif" fill="#333">BookStore</text>
+</svg>

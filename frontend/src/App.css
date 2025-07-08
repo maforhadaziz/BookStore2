@@ -1,0 +1,785 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7f7f7;
+  color: #222;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 1000;
+  background: #fff;
+  color: #222;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+
+.theme-toggle-btn:hover {
+  background: #222;
+  color: #ffd700;
+  border-color: #ffd700;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Dark Theme */
+.dark-theme, .dark-theme body, .dark-theme .app-root {
+  background: #181a1b !important;
+  color: #f1f1f1 !important;
+}
+
+.dark-theme .main-content,
+.dark-theme .hero-section,
+.dark-theme .categories-section,
+.dark-theme .featured-section,
+.dark-theme .latest-section,
+.dark-theme .cta-section {
+  background: #181a1b !important;
+  color: #f1f1f1 !important;
+}
+
+.dark-theme .category-card,
+.dark-theme .featured-book-card,
+.dark-theme .latest-book-card {
+  background: #23272b !important;
+  color: #f1f1f1 !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25) !important;
+}
+
+.dark-theme .category-card:hover,
+.dark-theme .featured-book-card:hover,
+.dark-theme .latest-book-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35) !important;
+}
+
+.dark-theme .footer, .dark-theme .footer-content {
+  background: #23272b !important;
+  color: #f1f1f1 !important;
+}
+
+.dark-theme .navbar, .dark-theme .app-header {
+  background: #23272b !important;
+  color: #ffd700 !important;
+}
+
+.dark-theme .theme-toggle-btn {
+  background: #23272b;
+  color: #ffd700;
+  border-color: #ffd700;
+}
+
+.dark-theme .theme-toggle-btn:hover {
+  background: #ffd700;
+  color: #23272b;
+  border-color: #ffd700;
+}
+
+/* Button styles for dark mode - ensure all buttons are visible */
+.dark-theme .book-card-link,
+.dark-theme .featured-book-link,
+.dark-theme .view-details-btn,
+.dark-theme .latest-view-btn,
+.dark-theme .cta-btn.primary,
+.dark-theme .hero-btn.primary,
+.dark-theme .signup-btn,
+.dark-theme .login-btn {
+  background: #ffd700 !important;
+  color: #23272b !important;
+  border: none !important;
+}
+
+.dark-theme .book-card-link:hover,
+.dark-theme .featured-book-link:hover,
+.dark-theme .view-details-btn:hover,
+.dark-theme .latest-view-btn:hover,
+.dark-theme .cta-btn.primary:hover,
+.dark-theme .hero-btn.primary:hover,
+.dark-theme .signup-btn:hover,
+.dark-theme .login-btn:hover {
+  background: #ffed4e !important;
+  color: #23272b !important;
+}
+
+.dark-theme .cta-btn.secondary,
+.dark-theme .hero-btn.secondary {
+  background: transparent !important;
+  color: #ffd700 !important;
+  border: 2px solid #ffd700 !important;
+}
+
+.dark-theme .cta-btn.secondary:hover,
+.dark-theme .hero-btn.secondary:hover {
+  background: #ffd70022 !important;
+  color: #fff !important;
+}
+
+/* Ensure form inputs are visible in dark mode */
+.dark-theme input,
+.dark-theme textarea,
+.dark-theme select {
+  background: #23272b !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #4a4a4a !important;
+}
+
+.dark-theme input:focus,
+.dark-theme textarea:focus,
+.dark-theme select:focus {
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2) !important;
+}
+
+/* Ensure labels are visible */
+.dark-theme label {
+  color: #f1f1f1 !important;
+}
+
+/* Ensure links are visible */
+.dark-theme a {
+  color: #ffd700 !important;
+}
+
+.dark-theme a:hover {
+  color: #ffed4e !important;
+}
+
+/* Ensure section titles are visible */
+.dark-theme .section-title {
+  color: #f1f1f1 !important;
+}
+
+.dark-theme .section-subtitle {
+  color: #bdc3c7 !important;
+}
+
+/* Ensure book titles and text are visible */
+.dark-theme .book-title,
+.dark-theme .category-name,
+.dark-theme .latest-book-title {
+  color: #f1f1f1 !important;
+}
+
+.dark-theme .book-author,
+.dark-theme .category-description,
+.dark-theme .latest-book-author {
+  color: #bdc3c7 !important;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.app-header {
+  background: #2d3e50;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header nav a {
+  color: #fff;
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem 0;
+  background: #f7f7f7;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(120deg, #f5f7fa 0%, #c3cfe2 100%);
+  text-align: center;
+  padding: 60px 20px 40px 20px;
+  border-radius: 0 0 32px 32px;
+  margin-bottom: 32px;
+}
+.hero-section h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #2d3142;
+}
+.hero-section p {
+  font-size: 1.2rem;
+  color: #4f5d75;
+  margin-bottom: 24px;
+}
+.shop-now-btn {
+  display: inline-block;
+  background: #3867d6;
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(56,103,214,0.08);
+  transition: background 0.2s;
+}
+.shop-now-btn:hover {
+  background: #274b8c;
+}
+
+/* Categories Section */
+.categories-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  margin: 0 auto 48px auto;
+  max-width: 1100px;
+}
+.category-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+  width: 150px;
+  text-align: center;
+  padding: 18px 10px 10px 10px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+.category-card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 6px 24px rgba(44,62,80,0.13);
+}
+.category-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid #e0e6ed;
+}
+.category-card h3 {
+  font-size: 1.1rem;
+  color: #22223b;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Featured Books Section */
+.featured-books-section {
+  max-width: 1200px;
+  margin: 0 auto 48px auto;
+  padding: 0 16px;
+}
+.featured-books-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #22223b;
+  margin-bottom: 24px;
+  text-align: left;
+}
+.featured-books-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: flex-start;
+}
+.featured-book-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+  width: 220px;
+  padding: 18px 14px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.featured-book-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(44,62,80,0.13);
+}
+.featured-book-cover {
+  width: 120px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+}
+.featured-book-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #22223b;
+  margin-bottom: 4px;
+  text-align: center;
+}
+.featured-book-author {
+  font-size: 0.98rem;
+  color: #4f5d75;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.featured-book-link {
+  margin-top: auto;
+  background: #3867d6;
+  color: #fff;
+  padding: 7px 18px;
+  border-radius: 16px;
+  font-size: 0.98rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.featured-book-link:hover {
+  background: #274b8c;
+}
+
+/* Footer */
+.app-footer {
+  background: #2d3e50;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.95rem;
+  margin-top: auto;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -2px 12px rgba(44, 62, 80, 0.08);
+}
+
+/* General Utility */
+.text-center { text-align: center; }
+.mt-2 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 2rem; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .categories-section, .featured-books-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .featured-books-title {
+    text-align: center;
+  }
+}
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 36px 8px 24px 8px;
+  }
+  .categories-section {
+    gap: 16px;
+  }
+  .category-card {
+    width: 110px;
+    padding: 10px 4px 6px 4px;
+  }
+  .category-card img {
+    width: 54px;
+    height: 54px;
+  }
+  .featured-books-grid {
+    gap: 16px;
+  }
+  .featured-book-card {
+    width: 140px;
+    padding: 10px 4px 8px 4px;
+  }
+  .featured-book-cover {
+    width: 70px;
+    height: 100px;
+  }
+}
+
+.signup-form .form-group {
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #2d3e50;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: #f9f9f9;
+}
+
+.signup-btn {
+  background: #2d3e50;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2.2rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+.signup-btn:hover {
+  background: #1a2533;
+}
+
+.login-form .form-group {
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #2d3e50;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: #f9f9f9;
+}
+
+.login-btn {
+  background: #2d3e50;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2.2rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+.login-btn:hover {
+  background: #1a2533;
+}
+
+.success-message {
+  color: #218838;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.error-message {
+  color: #c0392b;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* Center the auth container */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+/* Card style for login/signup */
+.login-form, .signup-form {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(44, 62, 80, 0.10);
+  padding: 2.5rem 2rem;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.auth-container h2 {
+  margin-bottom: 1.5rem;
+  color: #2d3e50;
+  font-weight: 600;
+}
+
+.dark-theme .auth-container h2 {
+  color: #fff;
+}
+
+.dark-theme .login-form,
+.dark-theme .signup-form {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .login-form label,
+.dark-theme .signup-form label {
+  color: #fff;
+}
+
+.dark-theme .login-form input,
+.dark-theme .signup-form input {
+  background: #1a1a1a;
+  border: 1px solid #444;
+  color: #fff;
+}
+
+.dark-theme .login-form input:focus,
+.dark-theme .signup-form input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.dark-theme .login-form input::placeholder,
+.dark-theme .signup-form input::placeholder {
+  color: #888;
+}
+
+.navbar-nav {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.navbar-nav a,
+.navbar-nav button {
+  color: #fff;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 6px 12px;
+}
+
+.navbar-nav button:hover,
+.navbar-nav a:hover {
+  color: #ffd700;
+}
+
+.admin-panel-link {
+  position: absolute;
+  top: 80px;
+  left: 30px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  background: #007bff;
+  padding: 10px 18px;
+  border-radius: 4px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 240px;
+  background-color: #2d3e50;
+  color: white;
+  padding: 2rem 1rem;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.admin-sidebar h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.admin-sidebar a:hover {
+  color: #ffd700;
+}
+
+.admin-main {
+  margin-left: 240px;
+  padding: 2rem;
+  flex-grow: 1;
+  background: #f7f7f7;
+}
+.admin-header {
+  background: #2d3e50;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7fa;
+}
+.main-content {
+  flex: 1 0 auto;
+  padding-bottom: 32px;
+}
+.footer {
+  background: #22223b;
+  color: #fff;
+  padding: 32px 0 18px 0;
+  margin-top: auto;
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.footer-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffd700;
+}
+.footer-links {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.18s, color 0.18s;
+}
+.footer-link:hover {
+  background: #3867d6;
+  color: #fff;
+}
+.footer-copy {
+  font-size: 0.98rem;
+  color: #c3cfe2;
+  margin-top: 8px;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .footer-content {
+    padding: 0 8px;
+    gap: 10px;
+  }
+  .footer-links {
+    gap: 12px;
+  }
+  .footer-brand {
+    font-size: 1.1rem;
+  }
+}
+
+/* Password Toggle Styles */
+.password-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-container input {
+  width: 100%;
+  padding-right: 50px; /* Make room for the toggle button */
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.password-toggle-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.password-toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+}
+
+/* Dark theme support for password toggle */
+.dark-theme .password-toggle-btn {
+  color: #bdc3c7;
+}
+
+.dark-theme .password-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffd700;
+}
+
+.dark-theme .password-toggle-btn:focus {
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+}

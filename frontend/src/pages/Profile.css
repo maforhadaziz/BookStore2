@@ -1,0 +1,296 @@
+.profile-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f7fa;
+}
+.profile-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+  padding: 38px 32px 32px 32px;
+  max-width: 420px;
+  width: 100%;
+}
+.profile-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #22223b;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4f5d75;
+  margin-bottom: 2px;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  padding: 9px 12px;
+  border: 1px solid #c3cfe2;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f8fafc;
+  outline: none;
+  transition: border 0.2s;
+}
+.form-group input:focus {
+  border: 1.5px solid #3867d6;
+}
+.profile-update-btn {
+  background: #3867d6;
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.profile-update-btn:hover {
+  background: #274b8c;
+}
+.profile-error {
+  color: #d7263d;
+  background: #ffeaea;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  font-size: 0.98rem;
+  text-align: center;
+}
+.profile-success {
+  color: #218838;
+  background: #e6f9ea;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  font-size: 0.98rem;
+  text-align: center;
+}
+/* Admin Profile Styles */
+.admin-profile-info {
+  margin-top: 32px;
+  padding: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+}
+
+.admin-profile-info h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.admin-profile-info p {
+  margin-bottom: 16px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.admin-profile-info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.admin-profile-info li {
+  padding: 8px 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-profile-info li:last-child {
+  border-bottom: none;
+}
+
+.admin-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.admin-action-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.admin-action-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Dark theme support for admin profile */
+.dark-theme .admin-profile-info {
+  background: linear-gradient(135deg, #2d3e50 0%, #34495e 100%);
+}
+
+.dark-theme .admin-action-btn {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: #ffd700;
+}
+
+.dark-theme .admin-action-btn:hover {
+  background: rgba(255, 215, 0, 0.3);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+  .profile-card {
+    padding: 18px 6px 18px 6px;
+    max-width: 98vw;
+  }
+  .profile-title {
+    font-size: 1.3rem;
+  }
+  
+  .admin-profile-info {
+    padding: 16px;
+    margin-top: 24px;
+  }
+  
+  .admin-profile-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .admin-profile-info li {
+    font-size: 0.9rem;
+  }
+} 
+
+/* Dark Mode Styles for Profile */
+.dark-theme .profile-container {
+  background: #1a1a1a;
+}
+
+.dark-theme .profile-card {
+  background: #23272b;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .profile-title {
+  color: #f1f1f1;
+}
+
+.dark-theme .form-group label {
+  color: #f1f1f1;
+}
+
+.dark-theme .form-group input[type="text"],
+.dark-theme .form-group input[type="email"],
+.dark-theme .form-group input[type="password"] {
+  background: #4a4a4a;
+  border: 1px solid #666;
+  color: #f1f1f1;
+}
+
+.dark-theme .form-group input:focus {
+  border: 1.5px solid #ffd700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+.dark-theme .form-group input::placeholder {
+  color: #bdc3c7;
+}
+
+.dark-theme .form-group input:disabled {
+  background: #2d3748;
+  color: #bdc3c7;
+  border-color: #4a5568;
+}
+
+.dark-theme .profile-update-btn {
+  background: #ffd700;
+  color: #23272b;
+}
+
+.dark-theme .profile-update-btn:hover {
+  background: #ffed4e;
+}
+
+.dark-theme .profile-error {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid #ff6b6b;
+}
+
+.dark-theme .profile-success {
+  color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+  border: 1px solid #28a745;
+}
+
+/* Password toggle button dark mode */
+.dark-theme .password-input-container {
+  position: relative;
+}
+
+.dark-theme .password-toggle-btn {
+  background: #4a4a4a;
+  border: 1px solid #666;
+  color: #f1f1f1;
+}
+
+.dark-theme .password-toggle-btn:hover {
+  background: #5a5a5a;
+  color: #ffd700;
+}
+
+/* Enhanced admin profile dark mode */
+.dark-theme .admin-profile-info {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  border: 1px solid #4a5568;
+}
+
+.dark-theme .admin-profile-info h3 {
+  color: #f1f1f1;
+}
+
+.dark-theme .admin-profile-info p {
+  color: #bdc3c7;
+}
+
+.dark-theme .admin-profile-info li {
+  color: #f1f1f1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .admin-action-btn {
+  background: rgba(255, 215, 0, 0.2);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  color: #ffd700;
+}
+
+.dark-theme .admin-action-btn:hover {
+  background: rgba(255, 215, 0, 0.3);
+  border-color: rgba(255, 215, 0, 0.5);
+  color: #ffffff;
+} 
