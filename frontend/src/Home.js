@@ -95,6 +95,9 @@ const Home = () => {
   const isAuthenticated = !!localStorage.getItem('token');
   const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+  const UPLOADS_BASE_URL = API_BASE_URL ? API_BASE_URL.replace('/api', '') : '';
+
   useEffect(() => {
     // Set quote of the day
     const today = new Date().getDate();
@@ -112,7 +115,7 @@ const Home = () => {
     }
 
     // Fetch books
-    axios.get('http://localhost:5000/api/books')
+    axios.get(`${API_BASE_URL}/books`)
       .then(res => {
         const booksData = res.data.books || res.data;
         setBooks(booksData);
@@ -179,7 +182,7 @@ const Home = () => {
       .catch(() => setBooks([]));
 
     // Fetch trending books
-    axios.get('http://localhost:5000/api/books/trending?limit=3')
+    axios.get(`${API_BASE_URL}/books/trending?limit=3`)
       .then(res => {
         setTrendingBooks(res.data);
       })
@@ -189,7 +192,7 @@ const Home = () => {
     const token = localStorage.getItem('token');
     if (token) {
       // Get happy users count
-      axios.get('http://localhost:5000/api/books/analytics/happy-readers', {
+      axios.get(`${API_BASE_URL}/books/analytics/happy-readers`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => {
@@ -238,7 +241,7 @@ const Home = () => {
     // Track book visit if user is authenticated
     const token = localStorage.getItem('token');
     if (token) {
-      axios.post(`http://localhost:5000/api/books/${book._id}/visit`, {}, {
+      axios.post(`${API_BASE_URL}/books/${book._id}/visit`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       }).catch(err => {
         console.error('Error tracking visit:', err);
@@ -349,7 +352,7 @@ const Home = () => {
             <div className="continue-book-cover">
               {continueReading.coverImageFileName ? (
                 <img 
-                  src={`http://localhost:5000/uploads/${continueReading.coverImageFileName}`} 
+                  src={`${UPLOADS_BASE_URL}/uploads/${continueReading.coverImageFileName}`} 
                   alt={continueReading.title} 
                 />
               ) : (
@@ -384,7 +387,7 @@ const Home = () => {
                 <div className="trending-book-cover">
                   {book.coverImageFileName ? (
                     <img 
-                      src={`http://localhost:5000/uploads/${book.coverImageFileName}`} 
+                      src={`${UPLOADS_BASE_URL}/uploads/${book.coverImageFileName}`} 
                       alt={book.title} 
                     />
                   ) : (
@@ -474,7 +477,7 @@ const Home = () => {
                 <div className="book-cover">
                   {book.coverImageFileName ? (
                     <img 
-                      src={`http://localhost:5000/uploads/${book.coverImageFileName}`} 
+                      src={`${UPLOADS_BASE_URL}/uploads/${book.coverImageFileName}`} 
                       alt={book.title} 
                     />
                   ) : (
@@ -518,7 +521,7 @@ const Home = () => {
                 <div className="latest-book-cover">
                   {book.coverImageFileName ? (
                     <img 
-                      src={`http://localhost:5000/uploads/${book.coverImageFileName}`} 
+                      src={`${UPLOADS_BASE_URL}/uploads/${book.coverImageFileName}`} 
                       alt={book.title} 
                     />
                   ) : (
