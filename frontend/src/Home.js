@@ -115,7 +115,7 @@ const Home = () => {
     }
 
     // Fetch books
-    axios.get(`${API_BASE_URL}/books`)
+    axios.get(`${API_BASE_URL}/api/books`)
       .then(res => {
         const booksData = res.data.books || res.data;
         setBooks(booksData);
@@ -182,7 +182,7 @@ const Home = () => {
       .catch(() => setBooks([]));
 
     // Fetch trending books
-    axios.get(`${API_BASE_URL}/books/trending?limit=3`)
+    axios.get(`${API_BASE_URL}/api/books/trending?limit=3`)
       .then(res => {
         setTrendingBooks(res.data);
       })
@@ -192,7 +192,7 @@ const Home = () => {
     const token = localStorage.getItem('token');
     if (token) {
       // Get happy users count
-      axios.get(`${API_BASE_URL}/books/analytics/happy-readers`, {
+      axios.get(`${API_BASE_URL}/api/books/analytics/happy-readers`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => {
@@ -241,7 +241,7 @@ const Home = () => {
     // Track book visit if user is authenticated
     const token = localStorage.getItem('token');
     if (token) {
-      axios.post(`${API_BASE_URL}/books/${book._id}/visit`, {}, {
+      axios.post(`${API_BASE_URL}/api/books/${book._id}/visit`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       }).catch(err => {
         console.error('Error tracking visit:', err);
@@ -364,7 +364,6 @@ const Home = () => {
             <div className="continue-book-info">
               <h3 className="continue-book-title">{continueReading.title}</h3>
               <p className="continue-book-author">by {continueReading.author}</p>
- 
               <button className="continue-btn">
                 Continue Reading →
               </button>

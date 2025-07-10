@@ -16,7 +16,7 @@ const ReviewModeration = () => {
   const fetchFlaggedReviews = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_BASE_URL}/books/reviews/flagged`, {
+      const response = await axios.get(`${API_BASE_URL}/api/books/reviews/flagged`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setFlaggedReviews(response.data);
@@ -31,7 +31,7 @@ const ReviewModeration = () => {
   const handleModeration = async (reviewId, action, reason = '') => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`${API_BASE_URL}/books/reviews/${reviewId}/moderate`, {
+              await axios.post(`${API_BASE_URL}/api/books/reviews/${reviewId}/moderate`, {
         action,
         reason
       }, {

@@ -41,11 +41,11 @@ const AdminDashboard = () => {
       const token = localStorage.getItem('token');
       
       // Fetch books
-      const booksResponse = await axios.get(`${API_BASE_URL}/books`);
+      const booksResponse = await axios.get(`${API_BASE_URL}/api/books`);
       const books = booksResponse.data.books || booksResponse.data;
       
       // Fetch users
-      const usersResponse = await axios.get(`${API_BASE_URL}/users/all`, {
+      const usersResponse = await axios.get(`${API_BASE_URL}/api/users/all`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const users = usersResponse.data;
@@ -75,7 +75,7 @@ const AdminDashboard = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_BASE_URL}/books/analytics/overview`, {
+      const response = await axios.get(`${API_BASE_URL}/api/books/analytics/overview`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAnalytics(response.data);
@@ -89,7 +89,7 @@ const AdminDashboard = () => {
   const fetchHappyReaders = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_BASE_URL}/books/analytics/happy-readers`, {
+      const response = await axios.get(`${API_BASE_URL}/api/books/analytics/happy-readers`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setHappyReaders(response.data);
@@ -101,7 +101,7 @@ const AdminDashboard = () => {
   const fetchBookAnalytics = async (bookId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_BASE_URL}/books/${bookId}/analytics`, {
+      const response = await axios.get(`${API_BASE_URL}/api/books/${bookId}/analytics`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBookAnalytics(response.data);

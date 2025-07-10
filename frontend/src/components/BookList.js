@@ -27,7 +27,7 @@ const BookList = () => {
         
         // Handle trending books
         if (sortFromUrl === 'trending') {
-          const response = await axios.get(`${API_BASE_URL}/books/trending?limit=50`);
+          const response = await axios.get(`${API_BASE_URL}/api/books/trending?limit=50`);
           setBooks(response.data);
           setSortBy('trending');
           setSortOrder('desc');
@@ -38,7 +38,7 @@ const BookList = () => {
             params.category = categoryFromUrl;
           }
           
-          const response = await axios.get(`${API_BASE_URL}/books`, { params });
+          const response = await axios.get(`${API_BASE_URL}/api/books`, { params });
           setBooks(response.data.books || response.data);
         }
         

@@ -32,7 +32,7 @@ const MyMessages = () => {
       setError(null);
       
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_BASE_URL}/contact/my-messages`, {
+      const response = await axios.get(`${API_BASE_URL}/api/contact/my-messages`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -53,7 +53,7 @@ const MyMessages = () => {
     if (message.adminReply && !message.userReadReply) {
       try {
         const token = localStorage.getItem('token');
-        await axios.put(`${API_BASE_URL}/contact/my-messages/${message._id}/mark-read`, {}, {
+        await axios.put(`${API_BASE_URL}/api/contact/my-messages/${message._id}/mark-read`, {}, {
           headers: { Authorization: `Bearer ${token}` }
         });
         
@@ -84,7 +84,7 @@ const MyMessages = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        `${API_BASE_URL}/contact/my-messages/${selectedMessage._id}/reply`,
+        `${API_BASE_URL}/api/contact/my-messages/${selectedMessage._id}/reply`,
         { message: replyText },
         { headers: { Authorization: `Bearer ${token}` } }
       );

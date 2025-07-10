@@ -20,7 +20,7 @@ const EditBooks = () => {
   }, []);
 
   const fetchBooks = () => {
-    axios.get(`${API_BASE_URL}/books`)
+    axios.get(`${API_BASE_URL}/api/books`)
       .then(res => setBooks(res.data.books || res.data))
       .catch(err => console.error(err));
   };
@@ -28,7 +28,7 @@ const EditBooks = () => {
   const fetchBookAnalytics = async (bookId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_BASE_URL}/books/${bookId}/analytics`, {
+      const response = await axios.get(`${API_BASE_URL}/api/books/${bookId}/analytics`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSelectedBookAnalytics(response.data);
@@ -40,7 +40,7 @@ const EditBooks = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this book?")) return;
     try {
-      await axios.delete(`${API_BASE_URL}/books/${id}`);
+              await axios.delete(`${API_BASE_URL}/api/books/${id}`);
       fetchBooks(); // Always get the latest list from backend
     } catch (error) {
       alert('Failed to delete');
@@ -85,7 +85,7 @@ const EditBooks = () => {
         data.append('coverImage', files.coverImage);
       }
 
-      await axios.put(`${API_BASE_URL}/books/${editingBook._id}`, data, {
+              await axios.put(`${API_BASE_URL}/api/books/${editingBook._id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${token}`

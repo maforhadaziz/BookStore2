@@ -22,7 +22,7 @@ const SidebarDrawer = ({ open, onClose, user, onLogout }) => {
   const fetchUserUnreadMessages = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_BASE_URL}/contact/unread-replies-count`, {
+      const response = await axios.get(`${API_BASE_URL}/api/contact/unread-replies-count`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -35,7 +35,7 @@ const SidebarDrawer = ({ open, onClose, user, onLogout }) => {
   const fetchAdminUnreadMessages = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_BASE_URL}/contact/messages`, {
+      const response = await axios.get(`${API_BASE_URL}/api/contact/messages`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       

@@ -92,7 +92,7 @@ const AddBook = () => {
         data.append('coverImage', files.coverImage);
       }
 
-      await axios.post(`${API_BASE_URL}/books`, data, {
+      await axios.post(`${API_BASE_URL}/api/books`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${localStorage.getItem('token')}`

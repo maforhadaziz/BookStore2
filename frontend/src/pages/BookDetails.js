@@ -221,7 +221,7 @@ const BookDetails = () => {
         setReviewText('');
         setReviewMsg('Review added successfully!');
         // Refresh reviews
-        axios.get(`${API_BASE_URL}/books/${id}/reviews`)
+        axios.get(`${API_BASE_URL}/api/books/${id}/reviews`)
           .then(res => setReviews(res.data))
           .catch(err => console.error('Error refreshing reviews:', err));
       })
@@ -255,7 +255,7 @@ const BookDetails = () => {
         setReplyingTo(null);
         alert('Admin reply added successfully!');
         // Refresh reviews
-        axios.get(`${API_BASE_URL}/books/${id}/reviews`)
+        axios.get(`${API_BASE_URL}/api/books/${id}/reviews`)
           .then(res => setReviews(res.data))
           .catch(err => console.error('Error refreshing reviews:', err));
       })
@@ -267,7 +267,7 @@ const BookDetails = () => {
 
   if (!book) return <div>Loading...</div>;
 
-  const pdfUrl = book.pdfFileName ? `${API_BASE_URL}/books/${book._id}/pdf` : null;
+  const pdfUrl = book.pdfFileName ? `${API_BASE_URL}/api/books/${book._id}/pdf` : null;
   const coverUrl = book.coverImageFileName ? `${UPLOADS_BASE_URL}/uploads/${book.coverImageFileName}` : null;
 
   return (
@@ -345,7 +345,7 @@ const BookDetails = () => {
                     const reason = prompt('Please specify why you are flagging this review:');
                     if (reason) {
                       const token = localStorage.getItem('token');
-                      axios.post(`${API_BASE_URL}/books/${id}/review/flag`, {
+                      axios.post(`${API_BASE_URL}/api/books/${id}/review/flag`, {
                         reviewId: r._id,
                         reason: reason
                       }, {
