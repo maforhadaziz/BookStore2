@@ -20,7 +20,7 @@ const Favorites = () => {
     }
 
     const API_BASE_URL = process.env.REACT_APP_API_URL;
-    axios.get(`${API_BASE_URL}/users/favorites`, {
+    axios.get(`${API_BASE_URL}/api/users/favorites`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(res => {

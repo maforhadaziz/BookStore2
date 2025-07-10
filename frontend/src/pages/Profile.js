@@ -22,7 +22,7 @@ const Profile = () => {
     }
 
     const token = localStorage.getItem('token');
-    axios.get(`${API_BASE_URL}/users/profile`, {
+    axios.get(`${API_BASE_URL}/api/users/profile`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => {
@@ -50,7 +50,7 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    axios.put(`${API_BASE_URL}/users/profile`, user, {
+    axios.put(`${API_BASE_URL}/api/users/profile`, user, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setMessage('Profile updated!'))

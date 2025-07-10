@@ -21,7 +21,7 @@ const History = () => {
       return;
     }
 
-    axios.get(`${API_BASE_URL}/users/history`, {
+    axios.get(`${API_BASE_URL}/api/users/history`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(res => {

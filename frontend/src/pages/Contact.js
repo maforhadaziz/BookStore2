@@ -31,7 +31,7 @@ const Contact = () => {
 
     try {
       const API_BASE_URL = process.env.REACT_APP_API_URL;
-      const response = await axios.post(`${API_BASE_URL}/contact/submit`, formData);
+      const response = await axios.post(`${API_BASE_URL}/api/contact/submit`, formData);
       
       setStatus({
         type: 'success',
