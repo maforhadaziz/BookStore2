@@ -20,7 +20,7 @@ function Login({ setIsAuthenticated, onAdminLogin }) {
 
     try {
       const API_BASE_URL = process.env.REACT_APP_API_URL;
-      const res = await fetch(`${API_BASE_URL}/users/login`, {
+      const res = await fetch(`${API_BASE_URL}/api/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
