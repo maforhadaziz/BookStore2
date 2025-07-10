@@ -5,7 +5,7 @@ require('./db');
 const app = express();
 
 app.use(cors({
-  origin: 'https://bookstorefree.onrender.com',
+  origin: 'https://bookstorefreee.netlify.app',
   credentials: true
 }));
 app.use(express.json());
