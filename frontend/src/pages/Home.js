@@ -111,7 +111,7 @@ const Home = () => {
     // Fetch user data if not in localStorage
     if (isAuthenticated && (!userName || !userEmail)) {
       const token = localStorage.getItem('token');
-      axios.get(`${process.env.REACT_APP_API_URL}/users/profile`, {
+      axios.get(`${process.env.REACT_APP_API_URL}/api/users/profile`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => {
@@ -128,7 +128,7 @@ const Home = () => {
     }
 
     // Fetch books
-    axios.get(`${process.env.REACT_APP_API_URL}/books`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/books`)
       .then(res => {
         const booksData = res.data.books || res.data;
         setBooks(booksData);
@@ -157,14 +157,14 @@ const Home = () => {
       .catch(() => setBooks([]));
 
     // Fetch trending books
-    axios.get(`${process.env.REACT_APP_API_URL}/books/trending?limit=3`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/books/trending?limit=3`)
       .then(res => {
         setTrendingBooks(res.data);
       })
       .catch(() => setTrendingBooks([]));
 
     // Fetch user count (public endpoint - no authentication required)
-    axios.get(`${process.env.REACT_APP_API_URL}/books/analytics/total-users`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/books/analytics/total-users`)
       .then(res => {
         setStats(prev => ({ 
           ...prev, 
@@ -194,7 +194,7 @@ const Home = () => {
     // Track book visit if user is authenticated
     const token = localStorage.getItem('token');
     if (token) {
-      axios.post(`${process.env.REACT_APP_API_URL}/books/${book._id}/visit`, {}, {
+      axios.post(`${process.env.REACT_APP_API_URL}/api/books/${book._id}/visit`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       }).catch(err => {
         console.error('Error tracking visit:', err);
@@ -310,7 +310,7 @@ const Home = () => {
             <div className="continue-book-cover">
               {continueReading.coverImageFileName ? (
                 <img 
-                  src={`${process.env.REACT_APP_API_URL}/uploads/${continueReading.coverImageFileName}`} 
+                  src={`${process.env.REACT_APP_API_URL}/api/uploads/${continueReading.coverImageFileName}`} 
                   alt={continueReading.title} 
                 />
               ) : (
@@ -345,7 +345,7 @@ const Home = () => {
                 <div className="trending-book-cover">
                   {book.coverImageFileName ? (
                     <img 
-                      src={`${process.env.REACT_APP_API_URL}/uploads/${book.coverImageFileName}`} 
+                      src={`${process.env.REACT_APP_API_URL}/api/uploads/${book.coverImageFileName}`} 
                       alt={book.title} 
                     />
                   ) : (
@@ -435,7 +435,7 @@ const Home = () => {
                 <div className="book-cover">
                   {book.coverImageFileName ? (
                     <img 
-                      src={`${process.env.REACT_APP_API_URL}/uploads/${book.coverImageFileName}`} 
+                      src={`${process.env.REACT_APP_API_URL}/api/uploads/${book.coverImageFileName}`} 
                       alt={book.title} 
                     />
                   ) : (
@@ -479,7 +479,7 @@ const Home = () => {
                 <div className="latest-book-cover">
                   {book.coverImageFileName ? (
                     <img 
-                      src={`${process.env.REACT_APP_API_URL}/uploads/${book.coverImageFileName}`} 
+                      src={`${process.env.REACT_APP_API_URL}/api/uploads/${book.coverImageFileName}`} 
                       alt={book.title} 
                     />
                   ) : (

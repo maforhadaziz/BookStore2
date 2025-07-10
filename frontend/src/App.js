@@ -51,7 +51,7 @@ function AppContent() {
     if (token) {
       const API_BASE_URL = process.env.REACT_APP_API_URL;
       // Verify token is still valid by making a request
-      fetch(`${API_BASE_URL}/users/verify`, {
+      fetch(`${API_BASE_URL}/api/users/verify`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

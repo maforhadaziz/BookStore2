@@ -23,24 +23,24 @@ const BookDetails = () => {
   const UPLOADS_BASE_URL = API_BASE_URL ? API_BASE_URL.replace('/api', '') : '';
 
   useEffect(() => {
-    axios.get(`${API_BASE_URL}/books`)
+    axios.get(`${API_BASE_URL}/api/books`)
       .then(res => {
         const found = res.data.books ? res.data.books.find(b => b._id === id) : res.data.find(b => b._id === id);
         setBook(found);
       });
-    axios.get(`${API_BASE_URL}/books/${id}/ratings`)
+    axios.get(`${API_BASE_URL}/api/books/${id}/ratings`)
       .then(res => {
         setRatingInfo(res.data);
       });
     if (isAuthenticated) {
       const token = localStorage.getItem('token');
-      axios.get(`${API_BASE_URL}/users/favorites`, {
+      axios.get(`${API_BASE_URL}/api/users/favorites`, {
         headers: { Authorization: `Bearer ${token}` }
       }).then(res => {
         setIsFavorite(res.data.some(b => b._id === id));
       });
     }
-    axios.get(`${API_BASE_URL}/books/${id}/reviews`)
+    axios.get(`${API_BASE_URL}/api/books/${id}/reviews`)
       .then(res => setReviews(res.data));
   }, [id, isAuthenticated]);
 
@@ -48,13 +48,13 @@ const BookDetails = () => {
     const token = localStorage.getItem('token');
     
     // Track visit when user rates the book (meaningful engagement)
-    axios.post(`${API_BASE_URL}/books/${id}/visit`, {}, {
+    axios.post(`${API_BASE_URL}/api/books/${id}/visit`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     }).catch(err => {
       console.error('Error tracking visit:', err);
     });
     
-    axios.post(`${API_BASE_URL}/books/${id}/rate`, { value }, {
+    axios.post(`${API_BASE_URL}/api/books/${id}/rate`, { value }, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => {
@@ -70,14 +70,14 @@ const BookDetails = () => {
     
     // Track visit when regular user toggles favorite (meaningful engagement)
     if (!isAdmin) {
-      axios.post(`${API_BASE_URL}/books/${id}/visit`, {}, {
+      axios.post(`${API_BASE_URL}/api/books/${id}/visit`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       }).catch(err => {
         console.error('Error tracking visit:', err);
       });
     }
     
-    axios.post(`${API_BASE_URL}/users/favorites/${id}`, {}, {
+    axios.post(`${API_BASE_URL}/api/users/favorites/${id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setIsFavorite(res.data.favorited));
   };
@@ -88,7 +88,7 @@ const BookDetails = () => {
     
     // Track visit when regular user adds to history (meaningful engagement)
     if (!isAdmin) {
-      axios.post(`${API_BASE_URL}/books/${id}/visit`, {}, {
+      axios.post(`${API_BASE_URL}/api/books/${id}/visit`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       }).catch(err => {
         console.error('Error tracking visit:', err);
@@ -118,7 +118,7 @@ const BookDetails = () => {
       localStorage.setItem(lastViewedKey, JSON.stringify(book));
     }
     
-    axios.post(`${API_BASE_URL}/users/history/${id}`, {}, {
+    axios.post(`${API_BASE_URL}/api/users/history/${id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     });
   };
@@ -130,7 +130,7 @@ const BookDetails = () => {
     try {
       // Track visit when regular user actually interacts with the book
       if (!isAdmin) {
-        axios.post(`${API_BASE_URL}/books/${id}/visit`, {}, {
+        axios.post(`${API_BASE_URL}/api/books/${id}/visit`, {}, {
           headers: { Authorization: `Bearer ${token}` }
         }).catch(err => {
           console.error('Error tracking visit:', err);
@@ -142,7 +142,7 @@ const BookDetails = () => {
       
       if (action === 'download') {
         // For actual download, use the download endpoint that tracks
-        const response = await fetch(`${API_BASE_URL}/books/${book._id}/download`, {
+        const response = await fetch(`${API_BASE_URL}/api/books/${book._id}/download`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -168,7 +168,7 @@ const BookDetails = () => {
         }
       } else {
         // For opening in new tab, use the regular PDF endpoint (no tracking)
-        const response = await fetch(`${API_BASE_URL}/books/${book._id}/pdf`, {
+        const response = await fetch(`${API_BASE_URL}/api/books/${book._id}/pdf`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -205,7 +205,7 @@ const BookDetails = () => {
     
     // Track visit when regular user submits a review (meaningful engagement)
     if (!isAdmin) {
-      axios.post(`${API_BASE_URL}/books/${id}/visit`, {}, {
+      axios.post(`${API_BASE_URL}/api/books/${id}/visit`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       }).catch(err => {
         console.error('Error tracking visit:', err);
@@ -214,7 +214,7 @@ const BookDetails = () => {
     
     setReviewMsg('Adding review...');
     
-    axios.post(`${API_BASE_URL}/books/${id}/review`, { comment: reviewText }, {
+    axios.post(`${API_BASE_URL}/api/books/${id}/review`, { comment: reviewText }, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => {
@@ -246,7 +246,7 @@ const BookDetails = () => {
       return;
     }
     
-    axios.post(`${API_BASE_URL}/books/${id}/review/${reviewId}/reply`, 
+    axios.post(`${API_BASE_URL}/api/books/${id}/review/${reviewId}/reply`, 
       { comment: adminReplyText }, 
       { headers: { Authorization: `Bearer ${token}` } }
     )
